@@ -30,4 +30,4 @@ public class HelperBase {
     } catch (NoAlertPresentException e) {
       return false;
     }
-}
+}}
