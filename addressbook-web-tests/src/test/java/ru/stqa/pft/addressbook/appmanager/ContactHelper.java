@@ -15,6 +15,7 @@ public class ContactHelper extends HelperBase {
 
   public void initContactCreation() {click(By.linkText("add new"));}
 
+
   public void fillContactForm(ContactData contactData, boolean creation){
     type(By.name("firstname"), contactData.getFirstName());
     type(By.name("lastname"), contactData.getLastName());
@@ -31,7 +32,7 @@ public class ContactHelper extends HelperBase {
 
   public void returnToHomePage() { click(By.linkText("home page"));}
 
-  public void initContactModification() { click(By.cssSelector("img[alt='Edit]");}
+  public void initContactModification() { click(By.cssSelector("img[alt='Edit]"));}
   public void submitContactModification(){
     click(By.name("update"));
   }

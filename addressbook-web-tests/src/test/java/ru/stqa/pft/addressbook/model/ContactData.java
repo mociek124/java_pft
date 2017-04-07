@@ -15,9 +15,9 @@ public class ContactData {
     this.group = group;
   }
 
-  public String getFirstname() { return firstname;}
+  public String getFirstName() { return firstname;}
 
-  public String getLastname() { return secondname;}
+  public String getLastName() { return secondname;}
 
   public String getGroup(){
     return group;
