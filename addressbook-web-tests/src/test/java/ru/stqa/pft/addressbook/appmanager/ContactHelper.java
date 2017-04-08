@@ -37,4 +37,14 @@ public class ContactHelper extends HelperBase {
     click(By.name("update"));
   }
 
+  public void createContact(ContactData contact) {
+    initContactCreation();
+    fillContactForm(contact,true);
+    submitContactCreation();
+    returnToHomePage();
+  }
+
+  public boolean isThereAGroup() {
+    return isElementPresent(By.name("new_group"));
+  }
 }
