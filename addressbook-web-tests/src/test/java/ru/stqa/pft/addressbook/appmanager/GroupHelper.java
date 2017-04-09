@@ -38,8 +38,8 @@ public class GroupHelper extends HelperBase {
     submitGroupCreation(By.name("delete"));
   }
 
-  public void selectGroup() {
-    submitGroupCreation(By.name("selected[]"));
+  public void selectGroup(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
 
