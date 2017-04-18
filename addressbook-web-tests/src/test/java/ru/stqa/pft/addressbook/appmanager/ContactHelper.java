@@ -7,9 +7,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by mocius on 2017-04-02.
@@ -47,6 +50,12 @@ public class ContactHelper extends HelperBase {
     submitContactCreation();
     returnToHomePage();
   }
+  public void modify(ContactData contact) {
+    fillContactForm(contact, false);
+    initContactModification();
+    submitContactModification();
+    returnToHomePage();
+  }
 
   public boolean isThereAGroup() {
     return isElementPresent(By.name("new_group"));
@@ -58,25 +67,41 @@ public class ContactHelper extends HelperBase {
 
   public List<ContactData> getContactList() {
     List<ContactData> contacts = new ArrayList<ContactData>();
+    List<WebElement> rows = wd.findElements(By.cssSelector("span.contact"));
+    for (WebElement row : rows){
+      String name = row.getText();
+      int id = Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value"));
+      contacts.add( new ContactData().withId(id).withFirstname("test_name").withSecondname( "test_surname"));
+    }
+    return contacts;
+  }
+
+  public Contacts all() {
+    Contacts contacts = new Contacts();
     List<WebElement> elements = wd.findElements(By.cssSelector("span.contact"));
     for (WebElement element : elements){
       String name = element.getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      ContactData contact = new ContactData(id, "test_name", "test_surname", "test1");
-      contacts.add(contact);
+      contacts.add( new ContactData().withId(id).withFirstname("test_name").withSecondname( "test_surname"));
     }
     return contacts;
   }
+
+
+
+
+
+
   public ContactData infoFromEditForm(ContactData contact){
     initContactModificationById(contact.getId());
     String firstname = wd.findElement(By.name("firstmane")).getAttribute("value");
-    String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+    String secondname = wd.findElement(By.name("secondname")).getAttribute("value");
     String home = wd.findElement(By.name("home")).getAttribute("value");
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
     String work = wd.findElement(By.name("work")).getAttribute("value");
     wd.navigate().back();
     return new ContactData().withId(contact.getId()).withFirstname(firstname)
-            .withLastname(lastname).withHomePhone(home).withMobilePhone(mobile)
+            .withSecondname(secondname).withHomePhone(home).withMobilePhone(mobile)
             .withWorkPhone(work);
   }
   private void initContactModificationById(int id){
