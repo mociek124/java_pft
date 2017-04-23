@@ -30,7 +30,7 @@ public class ContactModificationTests extends TestBase {
     Contacts before = app.contactHelper().all();
     int index = before.size()-1;
     ContactData contact = new ContactData()
-            .withFirstname("test_name").withSecondname("test_surname").withGroup("test1") ;
+            .withFirstname("test_name").withLastname("test_surname").withGroup("test1") ;
     ContactData modifiedContact = before.iterator().next();
     app.contactHelper().modify(contact);
     Contacts after = app.contactHelper().all();
