@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
+import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
@@ -22,6 +23,7 @@ public class ApplicationManager {
   private GroupHelper groupHelper;
   private ContactHelper contactHelper;
   private String browser;
+
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -61,6 +63,8 @@ public class ApplicationManager {
   }
 
   public ContactHelper contactHelper(){ return contactHelper; }
+
+
 
 
 
