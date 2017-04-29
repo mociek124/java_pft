@@ -12,8 +12,16 @@ dependencies {
     compile 'com.beust:jcommander:1.48'
     compile 'com.thoughtworks.xstream:xstream:1.4.8'
     compile 'com.google.code.gson:gson:2.6.1'
+}
 
+task testGroups(type:Test) {
+    useTestNG(){
+        suites 'src/test/resources/testng-groups.xml'
+    }
+}
 
-
-    
+task testContacts(type:Test) {
+    useTestNG(){
+        suites 'src/test/resources/testng-contacts.xml'
+    }
 }
