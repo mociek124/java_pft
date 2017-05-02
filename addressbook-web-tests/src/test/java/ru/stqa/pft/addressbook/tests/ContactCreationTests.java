@@ -3,6 +3,7 @@ package ru.stqa.pft.addressbook.tests;
 import org.junit.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.File;
 
@@ -16,6 +17,7 @@ import static org.testng.Assert.assertEquals;
 public class ContactCreationTests extends TestBase {
   @Test
   public void testContactCreation(){
+
     app.goTo().homePage();
     Contacts before = app.contactHelper().all();
     File photo = new File("src/test/resources/stru.png");
